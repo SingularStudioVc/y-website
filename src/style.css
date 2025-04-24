@@ -1,0 +1,611 @@
+:root {
+  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #0a0a10;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth; /* Add smooth scrolling */
+}
+
+a {
+  font-weight: 500;
+  color: #8899ff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #a0bfff;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #0a0a10;
+  color: rgba(255, 255, 255, 0.9);
+  overflow-x: hidden;
+  padding-top: 60px; /* Adjust based on nav height */
+}
+
+h1 {
+  font-size: 3.2em; /* Slightly smaller H1 */
+  font-weight: 600; /* Less bold H1 */
+  line-height: 1.1;
+  max-width: 800px;
+  margin: 0.5em auto;
+}
+
+h2 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  font-size: 2.2em; /* Slightly smaller H2 */
+  font-weight: 600;
+}
+
+h2:after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 3px;
+  background-color: #8899ff;
+  bottom: -10px;
+  left: 20%;
+}
+
+h3 {
+  font-size: 1.5em; /* Slightly smaller H3 */
+  margin: 1.5rem 0;
+  color: #e0e0ff;
+  font-weight: 600;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Style the wrapper for the hero logo */
+.hero .hero-logo-wrapper {
+  height: 11em;
+  width: 11em;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style the image inside the wrapper */
+.hero .hero-logo-wrapper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero .hero-logo-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(200, 200, 255, 0.25);
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #3178c6aa);
+}
+
+.subtitle {
+  color: #aaa;
+  font-size: 1.1em;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.features {
+  margin-top: 4rem;
+  width: 100%;
+}
+
+.feature-group {
+  margin-bottom: 3rem; /* Reduce margin */
+  padding: 2rem; /* Reduce padding */
+  background-color: #11131c; /* Simpler dark background */
+  background-image: none; /* Remove gradient */
+  border-radius: 12px; /* Slightly smaller radius */
+  border: 1px solid #252838; /* Subtler border */
+  transition: border-color 0.3s ease, background-color 0.3s ease; /* Simpler transition */
+  box-shadow: none; /* Remove default shadow */
+}
+
+/* Simplify hover effect - Re-add subtle lift and shadow */
+.feature-group:not(.after-customization):hover {
+  transform: translateY(-4px);
+  border-color: #4a4f70;
+  background-color: #151825;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15); /* Re-add subtle shadow */
+}
+
+.feature-group h3 {
+  margin-bottom: 1.5rem;
+  color: #eee;
+}
+
+.image-comparison {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.image-comparison figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 40%;
+  min-width: 250px;
+  /* border-radius: 12px; */ /* Remove radius from figure */
+  /* overflow: hidden; */   /* Remove overflow from figure */
+  /* padding: 15px; */     /* Remove padding from figure */
+  /* background-color: rgba(30, 30, 30, 0.6); */ /* Remove background from figure */
+}
+
+.image-comparison figcaption {
+  margin-top: 0.8rem;
+  font-style: italic;
+  color: #888;
+  font-size: 0.9rem;
+  background-color: rgba(25, 25, 25, 0.7);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.feature-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px; /* Apply radius directly to image */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  max-height: 400px; /* Limit height of images */
+  object-fit: contain;
+  overflow: hidden; /* Ensure content respects radius */
+  display: block; /* Ensure it behaves like a block for layout */
+}
+
+.feature-image:hover {
+  transform: scale(1.02);
+}
+
+/* Wrapper for the single image */
+.single-image-wrapper {
+  max-width: 50%; 
+  min-width: 280px;
+  margin: 0 auto 1.5rem auto; /* Add margin bottom */
+  border-radius: 12px;
+  overflow: hidden;
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); */ /* Remove shadow */
+}
+
+/* Styles for the image itself inside the wrapper */
+.single-image {
+  /* max-width: 50%; */ /* Moved to wrapper */
+  /* min-width: 280px; */ /* Moved to wrapper */
+  display: block;
+  /* margin-left: auto; */ /* Moved to wrapper */
+  /* margin-right: auto; */ /* Moved to wrapper */
+  max-height: 400px;
+  /* border-radius: 12px; */ /* Moved to wrapper */
+  /* overflow: hidden; */ /* Moved to wrapper */
+  width: 100%; /* Make image fill the wrapper */
+  height: auto;
+  /* box-shadow: none; */ /* Moved to wrapper */
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0 4rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.hero:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(100,108,255,0) 0%, rgba(100,108,255,0.8) 50%, rgba(100,108,255,0) 100%);
+  bottom: 0;
+}
+
+.feature-description {
+  color: #bbb;
+  margin-top: 1.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 2rem;
+  background-image: none; /* Remove gradient */
+  background-color: #7f8cff;
+  color: white;
+  padding: 0.9rem 2.2rem; /* Adjust padding */
+  border-radius: 50px;
+  font-weight: 500; /* Less bold */
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(100, 108, 255, 0.25); /* Reduced shadow */
+  border: none; /* Remove border */
+}
+
+.cta-button:hover {
+  background-image: none;
+  background-color: #646cff; /* Darken background */
+  transform: translateY(-2px); /* Simpler lift */
+  box-shadow: 0 6px 18px rgba(100, 108, 255, 0.35); /* Adjust hover shadow */
+}
+
+.contact {
+  padding: 4rem 2rem;
+  background-color: rgba(30, 30, 30, 0.4);
+  border-radius: 12px;
+  border: 1px solid #333;
+  margin-top: 3rem;
+}
+
+.contact-text {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #ddd;
+}
+
+.cta-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.contact-email {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.contact-email a {
+  color: #646cff;
+  transition: color 0.3s ease;
+}
+
+.contact-email a:hover {
+  color: #535bf2;
+  text-decoration: underline;
+}
+
+footer {
+  margin-top: 5rem;
+  padding: 2rem 0;
+  border-top: 1px solid #333;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Media queries for better responsiveness */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5em;
+  }
+  
+  h2 {
+    font-size: 1.8em;
+  }
+  
+  .single-image-wrapper {
+    max-width: 85%;
+  }
+  
+  .image-comparison figure {
+    max-width: 85%;
+  }
+}
+
+.offer-types-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.offer-type-card {
+  background-color: #191c2a;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #30344a;
+  min-height: auto;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  display: flex; /* Keep flex for vertical centering if needed */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text */
+}
+
+.offer-type-card:hover {
+  border-color: #6a7fcf; /* Simple border highlight */
+  background-color: #1f2233; /* Slightly lighter */
+  box-shadow: none; 
+}
+
+.offer-type-card h4 {
+  color: #d0d8ff;
+  font-size: 1.1em;
+  border-bottom: none; /* Remove border */
+  padding-bottom: 0;
+  /* display: flex; */ /* Remove flex */
+  /* align-items: center; */
+  /* gap: 12px; */
+  margin-top: 0.8rem; /* Add margin above title */
+  margin-bottom: 0.6rem; /* Adjust margin below title */
+}
+
+/* Select the icon image - Now direct child */
+.offer-type-card > .offer-icon {
+  width: 36px; 
+  height: 36px; 
+  display: block;
+  /* filter: ... */ /* Temporarily removing filter */
+  margin-bottom: 0.8rem; 
+}
+
+/* REMOVE the previous rule targeting icon inside h4 */
+/* .offer-type-card h4 > .offer-icon {
+  width: 18px; 
+  height: 18px; 
+  display: block; 
+  filter: invert(100%) brightness(2); 
+  flex-shrink: 0; 
+} */
+
+.offer-type-card h4 span {
+  flex-grow: 1; 
+}
+
+.offer-type-card p {
+  font-size: 0.85rem;
+  color: #aab0d0;
+  line-height: 1.5;
+  flex-grow: 1; 
+}
+
+.offer-type-card p i {
+  display: block; /* Make example appear on new line */
+  margin-top: 0.5rem;
+  font-style: normal; /* Remove default italic */
+  color: #7f8cff; /* Accent color for example */
+  font-size: 0.8rem;
+}
+
+/* Style the specific feature group containing the offer cards */
+.feature-group.offer-section {
+  background-color: #11131c; /* Match default group */
+  border: 1px solid #252838; /* Match default group */
+  padding: 2.5rem 2rem; /* Adjust padding */
+  box-shadow: none;
+  border-radius: 12px;
+}
+
+.feature-group.offer-section h3 {
+  font-size: 1.8em; /* Adjust size */
+  color: #d0d8ff;
+  border-bottom: none; /* Remove previous border */
+  padding-bottom: 0.8rem; /* Space for the underline */
+  display: inline-block;
+  margin-bottom: 1rem; /* Less space below title */
+  position: relative; /* For underline */
+}
+
+/* Underline accent for the title */
+.feature-group.offer-section h3::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 60px; /* Width of the underline */
+  height: 3px;
+  background-color: #8899ff; /* Match link color */
+  border-radius: 2px;
+}
+
+.feature-group.offer-section .feature-description {
+  color: #a0a5c0; /* Adjusted description color */
+  font-size: 1rem;
+  max-width: 600px; /* Limit width */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem !important; /* Ensure enough space before cards */
+}
+
+/* Styles specific to the QR code validation section */
+.validation-section {
+  background-color: rgba(50, 50, 50, 0.5); /* Slightly different background */
+  border: 1px solid #666;
+}
+
+.validation-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.validation-header h3 {
+  color: #90ee90; /* Light green for emphasis */
+  font-size: 1.8em;
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.qrcode-icon {
+  width: 40px;
+  height: 40px;
+  /* filter: invert(100%) brightness(2); */ /* Removed white filter */
+  flex-shrink: 0;
+}
+
+.validation-description {
+  color: #ddd; /* Brighter text for this important description */
+  font-size: 1.1em;
+  line-height: 1.6;
+  text-align: left;
+  margin-bottom: 2rem; /* Space before images */
+  max-width: 90%; /* Limit width slightly */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Styles for emphasizing the 'After' customization state */
+.before-customization {
+  opacity: 0.7;
+  border-color: #444;
+  transition: opacity 0.4s ease;
+}
+
+.before-customization:hover {
+  opacity: 0.85;
+}
+
+/* Simplify after-customization emphasis - Re-add subtle lift and shadow */
+.after-customization {
+  border-color: #6a7fcf; 
+  background-color: #151825;
+  /* Removed scale */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Add transform/shadow back to transition */
+}
+
+.after-customization:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(100, 120, 255, 0.15); /* Re-add subtle glow shadow */
+  border-color: #8899ff; 
+}
+
+.after-customization h3 {
+  color: #afbfff; /* Adjusted color */
+}
+
+/* Navigation Bar Styles */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(15, 15, 20, 0.85); /* Dark background with transparency */
+  backdrop-filter: blur(10px); /* Blur effect for modern look */
+  padding: 0.8rem 0;
+  z-index: 1000; /* Ensure it stays on top */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-nav ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1280px;
+}
+
+.main-nav li {
+  margin: 0 1.5rem;
+}
+
+.main-nav a {
+  color: #c0c0e0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease; /* Simpler transition */
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px; /* Adjust position */
+  left: 50%;
+  transform: translateX(-50%);
+  /* background-color: #7f8cff; */ /* REMOVED background causing issue */
+  transition: width 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: #ffffff;
+  /* transform: translateY(-2px); */ /* Remove lift */
+}
+
+/* Remove hover underline effect for simplification 
+.main-nav a:hover::after {
+  width: 100%;
+} */
