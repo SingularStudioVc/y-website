@@ -23,7 +23,7 @@ jobs:
           node-version: '18' # Ou la version de Node.js que vous préférez
 
       - name: Install dependencies ⚙️
-        run: npm install
+        run: npm ci
 
       - name: Build project 🏗️
         run: npm run build
