@@ -26,9 +26,9 @@ jobs:
         run: npm ci
 
       - name: Build project 🏗️
-        run: npm run build
-        # Si votre base URL n'est pas la racine (ex: votrenom.github.io/y-website/)
-        # Ajoutez l'option --base ici ou dans vite.config.js:
+        run: npm run build -- --base=/y-website/
+        # If your base URL isn't the root (e.g., yourname.github.io/y-website/)
+        # Add the --base option here or in vite.config.js:
         # run: npm run build -- --base=/y-website/
 
       - name: Upload artifact ⬆️
