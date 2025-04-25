@@ -12,7 +12,16 @@
   <body>
 
     <nav class="main-nav">
-      <ul>
+      <!-- Y Logo -->
+      <div class="nav-logo">Y</div>
+
+      <!-- Hamburger Button (visible on small screens) -->
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul id="main-nav-links">
         <li><a href="#personnalisation">Personnalisation</a></li>
         <li><a href="#outils-promotionnels">Offres</a></li>
         <li><a href="#mode-emploi">Mode d'emploi</a></li>
@@ -146,5 +155,8 @@
         <p>© 2025 Y. Tous droits réservés.</p>
       </footer>
     </div>
+
+    <!-- Add script reference at the end of body -->
+    <script src="/src/menu.js"></script>
   </body>
 </html>
