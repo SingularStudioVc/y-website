@@ -144,10 +144,12 @@ h3 {
 
 /* Simplify hover effect - Re-add subtle lift and shadow */
 .feature-group:not(.after-customization):hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.02); /* Add scale */
   border-color: #4a4f70;
   background-color: #151825;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15); /* Re-add subtle shadow */
+  box-shadow: 0 8px 22px rgba(0,0,0,0.2); /* Slightly stronger shadow */
+  /* Ensure transform is included in transition */
+  transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature-group h3 {
@@ -199,7 +201,7 @@ h3 {
 }
 
 .feature-image:hover {
-  transform: scale(1.02);
+  transform: scale(1.20); /* Increased scale */
 }
 
 /* Wrapper for the single image */
@@ -259,9 +261,40 @@ button:focus-visible {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 0 4rem;
+  padding: 4rem 1rem 6rem; /* Increased padding */
   margin-bottom: 2rem;
+  position: relative; /* Needed for pseudo-element and parallax */
+  min-height: 60vh; /* Give it some height */
+  color: #ffffff; /* Ensure text is white */
+
+  /* Subtle Background Pattern */
+  background-color: #0a0a10; /* Fallback color */
+  /* Example subtle gradient */
+  background-image: linear-gradient(rgba(10, 10, 16, 0.9), rgba(10, 10, 16, 0.9)),
+                    radial-gradient(circle at top left, rgba(100, 108, 255, 0.1) 0%, transparent 30%),
+                    radial-gradient(circle at bottom right, rgba(127, 140, 255, 0.1) 0%, transparent 30%);
+  background-size: cover, 100% 100%, 100% 100%;
+  /* Removed image test */
+  background-position: center center;
+  /* background-attachment: fixed; */ /* REMOVED Parallax effect */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Dark overlay for readability - adjust opacity as needed */
+  background-color: rgba(10, 10, 16, 0.3);
+  z-index: 1; /* Place overlay below content */
+}
+
+/* Ensure hero content is above the overlay */
+.hero > * {
   position: relative;
+  z-index: 2;
 }
 
 .hero:after {
@@ -271,6 +304,7 @@ button:focus-visible {
   height: 1px;
   background: linear-gradient(90deg, rgba(100,108,255,0) 0%, rgba(100,108,255,0.8) 50%, rgba(100,108,255,0) 100%);
   bottom: 0;
+  z-index: 2; /* Ensure divider is above overlay */
 }
 
 .feature-description {
@@ -284,12 +318,17 @@ button:focus-visible {
 .cta-button {
   display: inline-block;
   margin-top: 2rem;
-  background-image: none; /* Remove gradient */
-  background-color: #7f8cff;
+  /* Animated Gradient Background with more colors - Floating effect */
+  background: linear-gradient(45deg, #7f8cff, #9400d3, #a0bfff, #6a0dad, #7f8cff);
+  /* Indigo (#6a0dad), Purple (#9400d3) added */
+  background-size: 400% 400%; /* Increase size for more colors */
+  animation: gradientFloat 15s ease infinite; /* Use new keyframes, much longer duration */
+  
   color: white;
   padding: 0.9rem 2.2rem; /* Adjust padding */
   border-radius: 50px;
   font-weight: 500; /* Less bold */
+  /* Update transition for transform and shadow */
   transition: all 0.3s ease;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(100, 108, 255, 0.25); /* Reduced shadow */
@@ -297,10 +336,18 @@ button:focus-visible {
 }
 
 .cta-button:hover {
-  background-image: none;
-  background-color: #646cff; /* Darken background */
-  transform: translateY(-2px); /* Simpler lift */
-  box-shadow: 0 6px 18px rgba(100, 108, 255, 0.35); /* Adjust hover shadow */
+  /* Keep gradient animation, enhance other effects */
+  transform: translateY(-3px) scale(1.04); /* Add scale and slightly more lift */
+  box-shadow: 0 7px 20px rgba(100, 108, 255, 0.4); /* Enhance hover shadow */
+  /* Optional: slightly speed up animation on hover? */
+  /* animation-duration: 4s; */
+}
+
+/* Keyframes for gradient float animation */
+@keyframes gradientFloat {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
 }
 
 .contact {
@@ -379,7 +426,8 @@ footer {
   border-radius: 10px;
   border: 1px solid #30344a;
   min-height: auto;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  /* Update transition */
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   display: flex; /* Keep flex for vertical centering if needed */
   flex-direction: column; /* Stack elements vertically */
   align-items: center; /* Center items horizontally */
@@ -389,7 +437,8 @@ footer {
 .offer-type-card:hover {
   border-color: #6a7fcf; /* Simple border highlight */
   background-color: #1f2233; /* Slightly lighter */
-  box-shadow: none; 
+  transform: translateY(-5px) scale(1.03); /* Add scale and lift */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Add subtle shadow */
 }
 
 .offer-type-card h4 {
@@ -664,7 +713,18 @@ footer {
 /* Responsive Navigation - Dropdown */
 @media (max-width: 768px) {
   .main-nav {
-    padding: 0.5rem 1rem; /* Adjust padding for smaller screens */
+    /* Apply base padding: 0.5rem top/bottom, 1rem left, 1.5rem right */
+    padding: 0.5rem 1.5rem 0.5rem 1rem; 
+  }
+
+  /* Add specific margin adjustments if needed */
+  /* Example: 
+  .nav-logo {
+    margin-left: 0; // Remove default margin if any
+  }
+  */
+  .menu-toggle {
+    margin-right: 1rem; /* Ensure no extra margin on the button */
   }
 
   /* Show the hamburger button */

@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   </head>
   <body>
 
@@ -31,12 +33,12 @@
 
     <div id="app">
       <header class="hero">
-        <div class="hero-logo-wrapper">
+        <div class="hero-logo-wrapper" data-aos="zoom-in">
           <img src="/logo_y_blackbg.png" alt="Logo Y"/>
         </div>
-        <h1>Boostez la visibilité de votre spot</h1>
-        <p class="subtitle">Faites buzzer votre spot et fidélisez vos clients. Personnalisez votre page Y et lancez des campagnes promotionnelles et virales.</p>
-        <a href="#mode-emploi" class="cta-button">Commencez aujourd'hui</a>
+        <h1 data-aos="fade-up">Boostez la visibilité de votre spot</h1>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Faites buzzer votre spot et fidélisez vos clients. Personnalisez votre page Y et lancez des campagnes promotionnelles et virales.</p>
+        <a href="#mode-emploi" class="cta-button" data-aos="fade-up" data-aos-delay="200">Commencez aujourd'hui</a>
       </header>
 
       <section class="features">
@@ -71,28 +73,28 @@
           </div>
         </div>
 
-        <h2 id="outils-promotionnels">Boostez vos ventes avec nos outils</h2>
-        <p class="feature-description">Créez des campagnes qui marquent les esprits. Choisissez le format d'offre idéal et suivez les validations en temps réel grâce au scan QR code sécurisé.</p>
+        <h2 id="outils-promotionnels" data-aos="fade-up">Boostez vos ventes avec nos outils</h2>
+        <p class="feature-description" data-aos="fade-up" data-aos-delay="100">Créez des campagnes qui marquent les esprits. Choisissez le format d'offre idéal et suivez les validations en temps réel grâce au scan QR code sécurisé.</p>
 
-        <div class="feature-group offer-section">
+        <div class="feature-group offer-section" data-aos="zoom-in-up">
           <h3>4 formats d'offres pour tous vos objectifs</h3>
           <div class="offer-types-container">
-            <div class="offer-type-card">
+            <div class="offer-type-card" data-aos="fade-left" data-aos-delay="0">
               <img src="/timer.png" alt="Icône Durée Limitée" class="offer-icon">
               <h4>Offre à durée limitée</h4>
               <p>Définissez une date d'expiration. <br><i>Exemple : -20% sur les boissons jusqu'à dimanche soir.</i></p>
             </div>
-            <div class="offer-type-card">
+            <div class="offer-type-card" data-aos="slide-left" data-aos-delay="300">
               <img src="/number.png" alt="Icône Quantité Limitée" class="offer-icon">
               <h4>Offre à quantité limitée</h4>
               <p>Limitez l'offre à un stock précis. <br><i>Exemple : Les 50 premiers clients bénéficient d'un dessert offert.</i></p>
             </div>
-            <div class="offer-type-card">
+            <div class="offer-type-card" data-aos="slide-left" data-aos-delay="600">
               <img src="/star.png" alt="Icône Programme Fidélité" class="offer-icon">
               <h4>Programme de fidélité</h4>
               <p>Récompensez les clients réguliers. <br><i>Exemple : 1 café offert tous les 10 cafés achetés.</i></p>
             </div>
-            <div class="offer-type-card">
+            <div class="offer-type-card" data-aos="slide-left" data-aos-delay="900">
                <img src="/shippingbox.png" alt="Icône Offre Groupée" class="offer-icon">
               <h4>Offre groupée (bundle)</h4>
               <p>Proposez plusieurs articles ensemble. <br><i>Exemple : Formule déjeuner : plat + boisson + dessert à 15€.</i></p>
@@ -142,7 +144,7 @@
         </div>
       </section>
 
-      <section id="contact" class="contact">
+      <section id="contact" class="contact" data-aos="zoom-in">
         <h2>Attirez et fidélisez plus de clients avec Y</h2>
         <p class="contact-text">Prêt à attirer de nouveaux clients ? Téléchargez Y, revendiquez votre spot et créez votre première offre dès maintenant.</p>
         <div class="cta-container">
@@ -156,7 +158,11 @@
       </footer>
     </div>
 
-    <!-- Add script reference at the end of body -->
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Menu JS -->
     <script src="/src/menu.js"></script>
+    <!-- Animations JS -->
+    <script src="/src/animations.js"></script>
   </body>
 </html>
