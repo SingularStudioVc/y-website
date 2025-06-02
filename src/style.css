@@ -43,7 +43,7 @@ h1 {
 
 h2 {
   position: relative;
-  display: inline-block;
+  display: block; /* Changed from inline-block */
   margin-bottom: 2.5rem;
   font-size: 2.2em; /* Slightly smaller H2 */
   font-weight: 600;
@@ -52,11 +52,12 @@ h2 {
 h2:after {
   content: '';
   position: absolute;
-  width: 60%;
+  width: 120px; /* Changed from 60% to a fixed width */
   height: 3px;
   background-color: #8899ff;
   bottom: -10px;
-  left: 20%;
+  left: 50%; /* Centering adjustment */
+  transform: translateX(-50%); /* Centering adjustment */
 }
 
 h3 {
@@ -127,7 +128,7 @@ h3 {
 }
 
 .features {
-  margin-top: 4rem;
+  /* margin-top: 4rem; */ /* Removed to rely on #app gap */
   width: 100%;
 }
 
@@ -262,7 +263,7 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 4rem 1rem 6rem; /* Increased padding */
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */ /* Removed to rely on #app gap */
   position: relative; /* Needed for pseudo-element and parallax */
   min-height: 60vh; /* Give it some height */
   color: #ffffff; /* Ensure text is white */
@@ -307,12 +308,25 @@ button:focus-visible {
   z-index: 2; /* Ensure divider is above overlay */
 }
 
+/* General .feature-description styles (used within feature-groups mostly) */
 .feature-description {
   color: #bbb;
   margin-top: 1.5rem;
-  max-width: 700px;
+  max-width: 700px; /* Default max-width */
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6; /* Default line-height */
+}
+
+/* Enhanced styles for the main description directly under a feature title */
+.feature-item > .feature-description {
+  font-size: 1.15em; /* Larger font size */
+  color: #e0e0ff;    /* Brighter text for more contrast */
+  max-width: 680px;  /* Slightly adjusted max-width for optimal line length */
+  margin-top: 1rem;  /* Space below the capsule title */
+  margin-bottom: 3rem; /* More space before subsequent content (galleries/flows) */
+  line-height: 1.75; /* Improved line height for readability */
+  text-align: center; /* Ensure it's centered */
 }
 
 .cta-button {
@@ -355,7 +369,7 @@ button:focus-visible {
   background-color: rgba(30, 30, 30, 0.4);
   border-radius: 12px;
   border: 1px solid #333;
-  margin-top: 3rem;
+  /* margin-top: 3rem; */ /* Removed to rely on #app gap */
 }
 
 .contact-text {
@@ -387,7 +401,7 @@ button:focus-visible {
 }
 
 footer {
-  margin-top: 5rem;
+  /* margin-top: 5rem; */ /* Removed to rely on #app gap */
   padding: 2rem 0;
   border-top: 1px solid #333;
   color: #888;
@@ -606,13 +620,14 @@ footer {
   left: 0;
   width: 100%;
   background-color: #1a1a1f; /* Slightly adjusted dark background */
-  padding: 0.8rem 2rem; /* Increase padding for logo */
+  padding: 0.8rem 2.5rem 0.8rem 2rem; /* Adjusted padding: T R B L */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   z-index: 1000;
   display: flex;
   justify-content: space-between; /* Logo left, Button right (on mobile) */
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box; /* Ensures padding is included in width */
 }
 
 /* Y Logo Styling */
@@ -621,9 +636,18 @@ footer {
   font-weight: 700; /* Bold */
   color: #ffffff; /* Use a highlight color */
   text-shadow: 0 0 5px rgba(113, 61, 245, 0.5); /* Subtle glow */
-  /* Optional: Add transition if you plan hover effects */
   transition: color 0.3s ease;
   font-family: 'Courier New', Courier, monospace; /* Use a monospace font stack */
+  order: 0; /* Ensures it's the first item */
+}
+
+/* Ensure the link wrapping the logo doesn't alter its appearance */
+.nav-logo-link,
+.nav-logo-link:hover,
+.nav-logo-link:focus {
+  color: inherit; /* Inherit color from .nav-logo */
+  text-decoration: none; /* Remove underline */
+  font-weight: inherit; /* Inherit font-weight from .nav-logo */
 }
 
 /* Optional: Hover effect for logo */
@@ -663,14 +687,14 @@ footer {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-.main-nav ul {
+/* .main-nav ul { */ /* Changed selector to be more specific */
+#main-nav-links {
   list-style: none;
   display: flex; /* Horizontal layout by default */
-  margin: 0 auto; /* Center the nav links */
   padding: 0;
   align-items: center;
   /* Order ensures it's visually in the center */
-  order: 2;
+  order: 1; /* Position after logo, before switcher */
 }
 
 .main-nav li {
@@ -710,6 +734,76 @@ footer {
   color: #ffffff; /* Link hover color */
 }
 
+/* Dropdown Menu Styles (Desktop) */
+.nav-item-dropdown {
+  position: relative; /* Context for absolute positioning of dropdown */
+}
+
+.nav-item-dropdown .dropdown-toggle::after {
+  content: ' ▼'; /* Simple down arrow, consider SVG or a nicer character */
+  font-size: 0.7em;
+  margin-left: 0.3em;
+}
+
+.dropdown-menu {
+  visibility: hidden; 
+  opacity: 0;        
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1f1f26;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 0.5rem 0;
+  list-style: none;
+  min-width: 220px; 
+  z-index: 1001;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(10px); 
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s ease-in-out; 
+  display: block; 
+  width: auto; 
+  box-sizing: border-box;
+  white-space: normal; /* Ensure this UL also resets whitespace */
+}
+
+.nav-item-dropdown:hover .dropdown-menu,
+.nav-item-dropdown:focus-within .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  display: block; 
+  width: 100%;    
+  margin: 0;
+  padding: 0;
+  list-style-type: none; 
+  box-sizing: border-box;
+  white-space: normal; /* Add this to counteract potential inherited nowrap */
+  /* text-align: left; */ 
+}
+
+.dropdown-menu li a {
+  display: block;     
+  width: 100%;        
+  padding: 0.6rem 1.2rem;
+  color: #c0c0e0; 
+  white-space: nowrap; 
+  text-decoration: none;
+  font-size: 0.95em;
+  box-sizing: border-box; 
+  text-align: left; 
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus {
+  background-color: #8899ff;
+  color: #0a0a10; /* Dark text on hover */
+}
+
 /* Responsive Navigation - Dropdown */
 @media (max-width: 768px) {
   .main-nav {
@@ -733,7 +827,8 @@ footer {
   }
 
   /* Hide the main nav links list */
-  .main-nav ul {
+  /* .main-nav ul { */ /* Changed selector to be more specific */
+  #main-nav-links {
     display: none; /* Hide links by default for dropdown */
     position: absolute;
     top: 100%; /* Position below the nav bar */
@@ -752,7 +847,8 @@ footer {
   }
 
   /* Style to show the menu when 'nav-open' class is added */
-  .main-nav ul.nav-open {
+  /* .main-nav ul.nav-open { */ /* Changed selector to be more specific */
+  #main-nav-links.nav-open {
     display: flex;
   }
 
@@ -766,5 +862,361 @@ footer {
     /* Example: padding-top: 60px; - Adjust based on .main-nav height */
     /* Keep the existing padding-top or adjust if nav height changed significantly */
      padding-top: 60px; /* Keeping the previous value, adjust if needed */
+  }
+}
+
+/* Styles for the new User Value Proposition Section */
+.user-value-prop-section {
+  padding: 3rem 0.5rem; /* Reduced horizontal padding from 1rem to 0.5rem */
+  /* margin-bottom: 2rem; */ /* Removed to rely on #app gap */
+  background-color: #282C40; /* Restoring intended distinct background color */
+  border-radius: 12px;
+  border: 1px solid #404560; /* Restoring intended border for new background */
+  text-align: center;
+}
+
+.user-value-prop-section h2 {
+  color: #c0c8ff; /* Lighter title color */
+  margin-bottom: 1.5rem; /* Space below title */
+}
+
+.user-value-prop-section h2:after {
+  background-color: #7a88cc; /* Underline color match */
+}
+
+.user-value-prop-section .feature-description {
+  color: #b0b8d0; /* Slightly brighter description text */
+  font-size: 1.05em; /* Slightly larger text */
+  line-height: 1.7;
+  max-width: 90%; /* Changed from 800px to allow wider text based on parent */
+}
+
+/* Styles for the video container in User Value Prop Section */
+.user-value-prop-section .video-container {
+  margin-top: 2rem; /* Space above the video */
+  margin-bottom: 1rem; /* Space below the video */
+  max-width: 500px; /* Max width of the video container - Reduced from 720px */
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #000; /* Black background for the video area */
+  border-radius: 8px; /* Optional: rounded corners for the container */
+  overflow: hidden; /* Ensures video respects border-radius */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Subtle shadow */
+}
+
+.user-value-prop-section video {
+  display: block; /* Removes extra space below video */
+  width: 100%;
+  height: auto; /* Maintains aspect ratio */
+  border-radius: 8px; /* Match container if it has one */
+}
+
+/* Language Switcher Styles */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Spacing between buttons */
+  order: 2; /* Position after nav links, before hamburger */
+}
+
+.lang-button {
+  background-color: transparent;
+  color: #c0c0e0; /* Match nav link color */
+  border: 1px solid #c0c0e0; /* Subtle border */
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.lang-button:hover {
+  background-color: rgba(192, 192, 224, 0.1);
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.lang-button.active {
+  background-color: #8899ff; /* Highlight color for active language */
+  color: #0a0a10; /* Dark text on active button */
+  border-color: #8899ff;
+  font-weight: 700;
+}
+
+/* Scroll to Top Button */
+#scrollToTopBtn {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 99;
+  border: none; /* Removed border */
+  outline: none;
+  background-color: transparent; /* Ensured transparent background */
+  color: #a0a5c0; /* Adjusted icon color for visibility without bg/border */
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; /* Keeps the clickable area round */
+  font-size: 28px; /* Slightly increased for better visibility */
+  box-shadow: none; /* Removed box shadow */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#scrollToTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#scrollToTopBtn:hover {
+  background-color: transparent; /* Ensure no background on hover */
+  color: #8899ff; /* Brighter/accent color on hover */
+  /* border: none; */ /* Ensure no border on hover */
+  transform: scale(1.2); /* Slightly larger scale on hover */
+}
+
+/* Feature Status Indicators */
+.indicator {
+  display: inline-block;
+  /* margin-left: 0.5em; */ /* Remove margin as it's now absolute */
+  padding: 0.2em 0.5em; /* Slightly reduced padding for overlay */
+  font-size: 0.7em;    /* Smaller font for overlay */
+  font-weight: 600;    /* Bold text */
+  border-radius: 4px; 
+  /* vertical-align: middle; */ /* Not needed for absolute positioning */
+  text-transform: uppercase; /* Uppercase for a badge feel */
+  line-height: 1.2; /* Adjust line height */
+}
+
+/* Specific styling for indicators within feature titles (capsules) */
+.feature-item > h3 .indicator {
+  position: absolute;
+  top: -8px; /* Adjust to position slightly above the capsule's top edge */
+  right: -10px; /* Adjust to position slightly outside the capsule's right edge */
+  z-index: 1; /* Ensure it's above the capsule background */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Add a subtle shadow to the indicator itself */
+}
+
+.indicator-new {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: 1px solid #388E3C; /* Darker green border */
+}
+
+.indicator-soon {
+  background-color: #FF9800; /* Orange */
+  color: white;
+  border: 1px solid #F57C00; /* Darker orange border */
+}
+
+/* Staff Summoning Gallery Styles */
+.staff-summoning-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 1.5rem; /* Spacing between images */
+  margin-top: 2rem; /* Space above the gallery */
+}
+
+.staff-summoning-gallery figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #151825; /* Similar to other feature content */
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #252838;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.staff-summoning-gallery .gallery-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px; /* Limit image height */
+  object-fit: contain; /* Ensure image fits well */
+  border-radius: 6px; /* Rounded corners for the image itself */
+  margin-bottom: 0.75rem; /* Space between image and caption */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.staff-summoning-gallery figcaption {
+  font-size: 0.85rem;
+  color: #a0a5c0; /* Caption color */
+  text-align: center;
+  background-color: rgba(25, 25, 25, 0.7);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+}
+
+/* Styles for individual feature titles (e.g., "1. Craft a Unique Spot Page") */
+.feature-item > h3 {
+  font-size: 1.8em;  /* Slightly adjusted font size */
+  color: #ffffff;    /* White text for better contrast on gradient */
+  font-weight: 600;
+  margin-top: 3rem;
+  margin-bottom: 2.5rem;
+  padding: 0.6em 1.5em; /* Padding for capsule shape */
+  position: relative;
+  text-align: center;
+  display: inline-block; /* To make capsule wrap text */
+  background: linear-gradient(135deg, #7f8cff, #6a0dad); /* Purple-blue gradient */
+  border-radius: 50px; /* Pill shape */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /* transition for potential hover effects if added later */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Remove the old underline style */
+.feature-item > h3::after {
+  content: none; /* Effectively removes the pseudo-element */
+}
+
+/* In-App Ordering Flow Diagram Styles */
+.feature-flow-diagram {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background-color: #151825; /* Consistent with other feature content */
+  border-radius: 8px;
+  border: 1px solid #252838;
+}
+
+.feature-flow-diagram h4 {
+  font-size: 1.3em;
+  color: #d0d8ff;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.flow-step {
+  background-color: #1c202f; /* Slightly lighter than parent for card effect */
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem; /* Space between steps and arrows */
+  border: 1px solid #30344a;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.flow-step strong {
+  display: block;
+  font-size: 1.1em;
+  color: #afbfff;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.flow-step p {
+  font-size: 0.9em;
+  color: #a0a5c0;
+  line-height: 1.5;
+  margin: 0.3rem 0; /* Tighter margin for list items within a step */
+}
+
+.flow-arrow {
+  text-align: center;
+  font-size: 1.5em;
+  color: #8899ff; /* Accent color for arrows */
+  margin: 0.5rem 0 1rem 0; /* Space around arrows */
+  font-weight: bold;
+}
+
+/* Special styling for the menu options step to group them */
+.menu-options-step {
+  margin-top: 1.5rem; /* Add a bit more space before menu options */
+  border-left: 3px solid #8899ff; /* Accent border to indicate a sub-section */
+}
+
+.menu-options-step strong {
+  color: #c0c8ff; /* Slightly different color for this sub-heading */
+}
+
+.menu-options-step p {
+  margin-left: 0.5rem;
+}
+
+/* How it Works Section Styles */
+.how-it-works-section {
+  padding: 3rem 0.5rem;
+  background-color: #1c1f2e; /* A slightly different dark shade */
+  border-radius: 12px;
+  border: 1px solid #30344a;
+  text-align: center;
+  margin-bottom: 3rem; /* Consistent with #app gap logic */
+}
+
+.how-it-works-section h2 {
+  color: #d0d8ff; /* Lighter title color */
+  margin-bottom: 1.5rem; /* Space below title */
+}
+
+.how-it-works-section h2:after {
+  background-color: #7a88cc; /* Underline color match */
+  width: 100px; /* Adjusted underline width */
+}
+
+/* Use existing .feature-description for p tag if suitable, or define new one */
+.how-it-works-section .feature-description {
+  color: #b0b8d0;
+  font-size: 1.05em;
+  line-height: 1.7;
+  max-width: 700px; /* Max width for readability */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2.5rem; /* Space before the gallery */
+}
+
+.how-to-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 2rem; /* Spacing between figures */
+  align-items: flex-start;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.how-to-gallery figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 45%; /* Adjust for two items side-by-side */
+  min-width: 280px; /* Minimum width before wrapping */
+  background-color: #151825;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #252838;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Use existing .feature-image for img tag if suitable */
+.how-to-gallery .feature-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 350px; /* Limit image height */
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.how-to-gallery figcaption {
+  font-size: 0.95rem;
+  color: #a0a5c0;
+  text-align: center;
+  background-color: rgba(25, 25, 25, 0.7);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Media query for stacking gallery items on smaller screens */
+@media (max-width: 600px) { /* Adjust breakpoint as needed */
+  .how-to-gallery figure {
+    max-width: 90%; /* Allow figures to take more width when stacked */
   }
 }

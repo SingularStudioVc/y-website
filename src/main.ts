@@ -7,6 +7,8 @@ import './style.css';
 // We *do* need to import our custom JS modules:
 import './menu.js';
 import './animations.js';
+import './i18n.js'; // Import the new i18n module
+import './scrollToTop.js'; // Import the scroll to top module
 
 // You could add other setup code here if needed
 console.log('Main script loaded.'); 

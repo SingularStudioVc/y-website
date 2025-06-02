@@ -15,7 +15,15 @@
 
     <nav class="main-nav">
       <!-- Y Logo -->
-      <div class="nav-logo">Y</div>
+      <a href="#" class="nav-logo-link" aria-label="Go to homepage">
+        <div class="nav-logo">Y</div>
+      </a>
+
+      <!-- Language Switcher -->
+      <div id="language-switcher" class="language-switcher">
+        <button data-lang="fr" class="lang-button active">FR</button>
+        <button data-lang="en" class="lang-button">EN</button>
+      </div>
 
       <!-- Hamburger Button (visible on small screens) -->
       <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -24,10 +32,18 @@
         <span class="hamburger-line"></span>
       </button>
       <ul id="main-nav-links">
-        <li><a href="#personnalisation">Personnalisation</a></li>
-        <li><a href="#outils-promotionnels">Offres</a></li>
-        <li><a href="#mode-emploi">Mode d'emploi</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#pourquoi-y-seduit" data-translate-key="nav.whyY">Y en bref</a></li>
+        <li class="nav-item-dropdown">
+          <a href="#spot-page" class="dropdown-toggle" data-translate-key="nav.solutions">Solutions</a>
+          <ul class="dropdown-menu">
+            <li><a href="#spot-page" data-translate-key="nav.spotPage">Personnalisation du Spot</a></li>
+            <li><a href="#promo-offers" data-translate-key="nav.promoOffers">Offres Promotionnelles</a></li>
+            <li><a href="#staff-summoning" data-translate-key="nav.staffSummoning" data-translate-html>Appel du Staff</a></li>
+            <li><a href="#in-app-orders" data-translate-key="nav.inAppOrdering" data-translate-html>Prise de Commande</a></li>
+          </ul>
+        </li>
+        <li><a href="#how-it-works" data-translate-key="nav.howItWorks">Mode d'emploi</a></li>
+        <li><a href="#contact" data-translate-key="nav.contact">Contact</a></li>
       </ul>
     </nav>
 
@@ -36,127 +52,255 @@
         <div class="hero-logo-wrapper" data-aos="zoom-in">
           <img src="/logo_y_blackbg.png" alt="Logo Y"/>
         </div>
-        <h1 data-aos="fade-up">Boostez la visibilité de votre spot</h1>
-        <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Faites buzzer votre spot et fidélisez vos clients. Personnalisez votre page Y et lancez des campagnes promotionnelles et virales.</p>
-        <a href="#mode-emploi" class="cta-button" data-aos="fade-up" data-aos-delay="200">Commencez aujourd'hui</a>
+        <h1 data-aos="fade-up" data-translate-key="hero.title">Améliorez le service, boostez l'engagement.</h1>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="100" data-translate-key="hero.subtitle">Personnalisez votre page, lancez des offres promotionnelles percutantes, activez l'appel digital du personnel et permettez à vos clients de commander directement depuis l'application.</p>
+        <a href="#how-it-works" class="cta-button" data-aos="fade-up" data-aos-delay="200" data-translate-key="hero.cta.startToday">Commencez aujourd'hui</a>
       </header>
 
+      <section id="pourquoi-y-seduit" class="user-value-prop-section" data-aos="fade-up">
+        <h2 data-translate-key="userValueProp.title">Y en bref</h2>
+        <p class="feature-description" data-aos-delay="100" data-translate-key="userValueProp.description" data-translate-html>
+          Marre de scroller pendant des heures et de tomber sur des avis peu fiables ? <strong>Y révolutionne la découverte de lieux</strong> ! 
+          Notre application plonge les utilisateurs au cœur de l'action avec des <strong>vidéos courtes et dynamiques</strong> qui capturent l'<strong>ambiance réelle</strong> de chaque spot. Fini les mauvaises surprises, ils vivent l'expérience avant même de s'y rendre.
+          Grâce à un <strong>classement malin par catégories</strong>, trouver une <strong>nouvelle pépite</strong> devient un jeu d'enfant. 
+          En présentant votre établissement sur Y, vous touchez une <strong>communauté engagée et curieuse</strong>, toujours à l'affût de nouveautés. Pour eux, c'est "<strong>moins de scroll, plus de vibes</strong>". Pour vous, c'est <strong>plus de visibilité</strong> et de <strong>nouveaux clients</strong>.
+        </p>
+        <div class="video-container" data-aos="zoom-in-up" data-aos-delay="200">
+          <video id="promo-video" width="100%" controls autoplay muted loop>
+            <source id="promo-video-source" src="/video_promo_fr.MOV" type="video/quicktime">
+            Votre navigateur ne supporte pas la lecture de vidéos.
+          </video>
+        </div>
+      </section>
+
       <section class="features">
-        <h2 id="personnalisation">Affirmez l'identité de votre spot</h2>
-        <p class="feature-description">Votre page Y, c'est votre vitrine digitale. Mettez-la à jour facilement : horaires, photos percutantes, description accrocheuse, tags... tout pour séduire les explorateurs.</p>
-        
-        <div class="feature-group before-customization">
-          <h3>Avant</h3>
-          <div class="image-comparison">
-            <figure>
-              <img src="/spotBeforeCustomization.png" alt="Page de spot avant personnalisation" class="feature-image">
-              <figcaption>Votre spot (carte)</figcaption>
-            </figure>
-            <figure>
-              <img src="/spotDetailBeforeCustomization.png" alt="Page de détails du spot avant amélioration" class="feature-image">
-              <figcaption>Fiche détaillée</figcaption>
-            </figure>
-          </div>
-        </div>
+        <h2 data-translate-key="solutions.sectionTitle">Nos Solutions</h2>
 
-        <div class="feature-group after-customization">
-          <h3>Après</h3>
-          <div class="image-comparison">
-            <figure>
-              <img src="/spotAfterCustomization.png" alt="Page de spot après personnalisation" class="feature-image">
-              <figcaption>Votre spot (carte)</figcaption>
-            </figure>
-            <figure>
-              <img src="/spotDetailAfterCustomization.png" alt="Page de détails du spot après amélioration" class="feature-image">
-              <figcaption>Fiche détaillée</figcaption>
-            </figure>
+        <section id="spot-page" class="feature-item">
+          <h3 data-translate-key="features.spotPage.title">1. Personnalisation du Spot</h3>
+          <p class="feature-description" data-translate-key="features.spotPage.description">Mettez en valeur votre identité. Personnalisez facilement votre page Y avec photos, horaires, et tous les détails qui vous rendent unique pour captiver les explorateurs.</p>
+          
+          <div class="feature-group before-customization">
+            <h3 data-translate-key="features.personalization.before.title">Avant</h3>
+            <div class="image-comparison">
+              <figure>
+                <img src="/spotBeforeCustomization.png" alt="Page de spot avant personnalisation" class="feature-image">
+                <figcaption data-translate-key="features.personalization.before.mapCaption">Votre spot</figcaption>
+              </figure>
+              <figure>
+                <img src="/spotDetailBeforeCustomization.png" alt="Page de détails du spot avant amélioration" class="feature-image">
+                <figcaption data-translate-key="features.personalization.before.detailCaption">Fiche détaillée</figcaption>
+              </figure>
+            </div>
           </div>
-        </div>
 
-        <h2 id="outils-promotionnels" data-aos="fade-up">Boostez vos ventes avec nos outils</h2>
-        <p class="feature-description" data-aos="fade-up" data-aos-delay="100">Créez des campagnes qui marquent les esprits. Choisissez le format d'offre idéal et suivez les validations en temps réel grâce au scan QR code sécurisé.</p>
+          <div class="feature-group after-customization">
+            <h3 data-translate-key="features.personalization.after.title">Après</h3>
+            <div class="image-comparison">
+              <figure>
+                <img src="/spotAfterCustomization.png" alt="Page de spot après personnalisation" class="feature-image">
+                <figcaption data-translate-key="features.personalization.after.mapCaption">Votre spot</figcaption>
+              </figure>
+              <figure>
+                <img src="/spotDetailAfterCustomization.png" alt="Page de détails du spot après amélioration" class="feature-image">
+                <figcaption data-translate-key="features.personalization.after.detailCaption">Fiche détaillée</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
 
-        <div class="feature-group offer-section" data-aos="zoom-in-up">
-          <h3>4 formats d'offres pour tous vos objectifs</h3>
-          <div class="offer-types-container">
-            <div class="offer-type-card" data-aos="fade-left" data-aos-delay="0">
-              <img src="/timer.png" alt="Icône Durée Limitée" class="offer-icon">
-              <h4>Offre à durée limitée</h4>
-              <p>Définissez une date d'expiration. <br><i>Exemple : -20% sur les boissons jusqu'à dimanche soir.</i></p>
+        <section id="promo-offers" class="feature-item">
+          <h3 data-aos="fade-up" data-translate-key="features.promoOffers.title">2. Offres Promotionnelles</h3>
+          <p class="feature-description" data-aos="fade-up" data-aos-delay="100" data-translate-key="features.promoOffers.description">Attirez et fidélisez votre clientèle. Créez des campagnes marketing percutantes, choisissez parmi divers formats d'offres et suivez les validations en temps réel grâce à un scan QR code simple et sécurisé.</p>
+
+          <div class="feature-group offer-section" data-aos="zoom-in-up">
+            <h3 data-translate-key="features.promoTools.offerFormats.title">4 formats d'offres pour tous vos objectifs</h3>
+            <div class="offer-types-container">
+              <div class="offer-type-card" data-aos="fade-left" data-aos-delay="0">
+                <img src="/timer.png" alt="Icône Durée Limitée" class="offer-icon">
+                <h4 data-translate-key="features.promoTools.offerFormats.limitedTime.title">Offre à durée limitée</h4>
+                <p data-translate-key="features.promoTools.offerFormats.limitedTime.description" data-translate-html>Définissez une date d'expiration. <br><i>Exemple : -20% sur les boissons jusqu'à dimanche soir.</i></p>
+              </div>
+              <div class="offer-type-card" data-aos="slide-left" data-aos-delay="300">
+                <img src="/number.png" alt="Icône Quantité Limitée" class="offer-icon">
+                <h4 data-translate-key="features.promoTools.offerFormats.limitedQuantity.title">Offre à quantité limitée</h4>
+                <p data-translate-key="features.promoTools.offerFormats.limitedQuantity.description" data-translate-html>Limitez l'offre à un stock précis. <br><i>Exemple : Les 50 premiers clients bénéficient d'un dessert offert.</i></p>
+              </div>
+              <div class="offer-type-card" data-aos="slide-left" data-aos-delay="600">
+                <img src="/star.png" alt="Icône Programme Fidélité" class="offer-icon">
+                <h4 data-translate-key="features.promoTools.offerFormats.loyalty.title">Programme de fidélité</h4>
+                <p data-translate-key="features.promoTools.offerFormats.loyalty.description" data-translate-html>Récompensez les clients réguliers. <br><i>Exemple : 1 café offert tous les 10 cafés achetés.</i></p>
+              </div>
+              <div class="offer-type-card" data-aos="slide-left" data-aos-delay="900">
+                 <img src="/shippingbox.png" alt="Icône Offre Groupée" class="offer-icon">
+                <h4 data-translate-key="features.promoTools.offerFormats.bundle.title">Offre groupée (bundle)</h4>
+                <p data-translate-key="features.promoTools.offerFormats.bundle.description" data-translate-html>Proposez plusieurs articles ensemble. <br><i>Exemple : Formule déjeuner : plat + boisson + dessert à 15€.</i></p>
+              </div>
             </div>
-            <div class="offer-type-card" data-aos="slide-left" data-aos-delay="300">
-              <img src="/number.png" alt="Icône Quantité Limitée" class="offer-icon">
-              <h4>Offre à quantité limitée</h4>
-              <p>Limitez l'offre à un stock précis. <br><i>Exemple : Les 50 premiers clients bénéficient d'un dessert offert.</i></p>
+          </div>
+          
+          <div class="feature-group">
+            <h3 data-translate-key="features.promoTools.offerCreation.title">Créez des offres promotionnelles en quelques clics</h3>
+            <div class="single-image-wrapper">
+              <img src="/OfferCreation.png" alt="Interface de création d'offres sur Y" class="feature-image single-image">
             </div>
-            <div class="offer-type-card" data-aos="slide-left" data-aos-delay="600">
-              <img src="/star.png" alt="Icône Programme Fidélité" class="offer-icon">
-              <h4>Programme de fidélité</h4>
-              <p>Récompensez les clients réguliers. <br><i>Exemple : 1 café offert tous les 10 cafés achetés.</i></p>
+            <p class="feature-description" data-translate-key="features.promoTools.offerCreation.description">Créez des offres pour attirer et fidéliser les clients.</p>
+          </div>
+           
+          <div class="feature-group validation-section">
+            <div class="validation-header">
+              <img src="/qrcode.png" alt="Icône QR Code" class="qrcode-icon">
+              <h3 data-translate-key="features.promoTools.validation.title">Validation simple et sécurisée par QR code</h3>
             </div>
-            <div class="offer-type-card" data-aos="slide-left" data-aos-delay="900">
-               <img src="/shippingbox.png" alt="Icône Offre Groupée" class="offer-icon">
-              <h4>Offre groupée (bundle)</h4>
-              <p>Proposez plusieurs articles ensemble. <br><i>Exemple : Formule déjeuner : plat + boisson + dessert à 15€.</i></p>
+            <p class="feature-description validation-description" data-translate-key="features.promoTools.validation.description">La validation ? Un jeu d'enfant. Chaque offre a son QR code unique. Scannez-le via l'app Y : c'est instantané, sécurisé et le suivi est automatique. Zéro prise de tête.</p>
+            <div class="image-comparison">
+              <figure>
+                <img src="/LimitedTimeOffer.png" alt="Exemple d'offre à durée limitée finalisée" class="feature-image">
+                <figcaption data-translate-key="features.promoTools.validation.limitedTimeCaption">Exemple : Offre à durée limitée</figcaption>
+              </figure>
+              <figure>
+                <img src="/LoyaltyProgramOffer.png" alt="Exemple de programme de fidélité finalisé" class="feature-image">
+                <figcaption data-translate-key="features.promoTools.validation.loyaltyCaption">Exemple : Programme de fidélité</figcaption>
+              </figure>
             </div>
           </div>
-        </div>
-        
-        <div class="feature-group">
-          <h3>Créez des offres promotionnelles en quelques clics</h3>
-          <div class="single-image-wrapper">
-            <img src="/OfferCreation.png" alt="Interface de création d'offres sur Y" class="feature-image single-image">
+        </section>
+
+        <section id="staff-summoning" class="feature-item">
+          <h3 data-aos="fade-up">
+            <span data-translate-key="features.staffSummoning.title.text">3. Appel du Staff</span>
+            <span class="indicator indicator-new" data-translate-key="ui.newIndicatorText">Nouveau</span>
+          </h3>
+          <p class="feature-description" data-translate-key="features.staffSummoning.description">Optimisez la réactivité de votre service. L'appel staff digital via Y permet à vos clients de solliciter rapidement votre personnel pour toute demande (menu, addition, etc.). Résultat : moins d'allers-retours inutiles pour vos équipes, un gain de temps précieux et des clients servis plus vite, sans attente.</p>
+          <div class="feature-group" data-aos="fade-up">
+            <div class="staff-summoning-gallery" data-aos="zoom-in-up">
+              <figure data-aos="fade-up" data-aos-delay="0">
+                <img src="/client_side_view.PNG" alt="Client view of the staff summoning feature in Y app" class="gallery-image">
+                <figcaption data-translate-key="features.staffSummoning.gallery.clientView">Interface Client</figcaption>
+              </figure>
+              <figure data-aos="fade-up" data-aos-delay="100">
+                <img src="/tables_dashboard.PNG" alt="Staff dashboard in Y app showing active customer summons" class="gallery-image">
+                <figcaption data-translate-key="features.staffSummoning.gallery.dashboardView">Tableau de Bord Staff</figcaption>
+              </figure>
+              <figure data-aos="fade-up" data-aos-delay="200">
+                <img src="/table_action_modal.PNG" alt="Staff acknowledging a customer's request via the Y app" class="gallery-image">
+                <figcaption data-translate-key="features.staffSummoning.gallery.acknowledgeView">Accuser Réception Appel</figcaption>
+              </figure>
+              <figure data-aos="fade-up" data-aos-delay="300">
+                <img src="/add_table.PNG" alt="Staff interface for managing tables within the Y app" class="gallery-image">
+                <figcaption data-translate-key="features.staffSummoning.gallery.manageTableView">Gestion des Tables</figcaption>
+              </figure>
+            </div>
+
+            <div class="feature-flow-diagram" data-aos="fade-up" data-aos-delay="100">
+              <h4 data-translate-key="features.staffSummoning.flow.title">Appel du Staff : Étape par Étape</h4>
+              <div class="flow-step">
+                <strong data-translate-key="features.staffSummoning.flow.step1.title">1. Création de Table (Commerçant)</strong>
+                <p data-translate-key="features.staffSummoning.flow.step1.text">Créez des tables dans votre tableau de bord Y, personnalisez les noms (ex: "Terrasse 1") et l'expiration du QR code.</p>
+              </div>
+              <div class="flow-arrow">⬇</div>
+              <div class="flow-step">
+                <strong data-translate-key="features.staffSummoning.flow.step2.title">2. Check-in Client (Scan QR)</strong>
+                <p data-translate-key="features.staffSummoning.flow.step2.text">Le client présente son QR code. Le commerçant le scanne via la vue de la table pour enregistrer le client.</p>
+              </div>
+              <div class="flow-arrow">⬇</div>
+              <div class="flow-step">
+                <strong data-translate-key="features.staffSummoning.flow.step3.title">3. Appel Digital (Client)</strong>
+                <p data-translate-key="features.staffSummoning.flow.step3.text">Une fois enregistré, le client appelle le staff via l'app avec des motifs prédéfinis ou personnalisés.</p>
+              </div>
+              <div class="flow-arrow">⬇</div>
+              <div class="flow-step">
+                <strong data-translate-key="features.staffSummoning.flow.step4.title">4. Alerte Staff</strong>
+                <p data-translate-key="features.staffSummoning.flow.step4.text">Le personnel reçoit une notification instantanée (nom de la table, motif).</p>
+              </div>
+              <div class="flow-arrow">⬇</div>
+              <div class="flow-step">
+                <strong data-translate-key="features.staffSummoning.flow.step5.title">5. Accuser Réception</strong>
+                <p data-translate-key="features.staffSummoning.flow.step5.text">Le staff peut accuser réception de la demande, ce qui informe le client qu'ils sont en route.</p>
+              </div>
+              <div class="flow-arrow">⬇</div>
+              <div class="flow-step">
+                <strong data-translate-key="features.staffSummoning.flow.step6.title">6. Service & Résolution</strong>
+                <p data-translate-key="features.staffSummoning.flow.step6.text">Le staff répond aux besoins; la demande est marquée comme résolue.</p>
+              </div>
+            </div>
+
           </div>
-          <p class="feature-description">Créez des offres pour attirer et fidéliser les clients.</p>
-        </div>
-         
-        <div class="feature-group validation-section">
-          <div class="validation-header">
-            <img src="/qrcode.png" alt="Icône QR Code" class="qrcode-icon">
-            <h3>Validation simple et sécurisée par QR code</h3>
+        </section>
+
+        <section id="in-app-orders" class="feature-item">
+          <h3 data-aos="fade-up">
+            <span data-translate-key="features.inAppOrdering.title.text">4. Prise de Commande</span>
+            <span class="indicator indicator-soon" data-translate-key="ui.soonIndicatorText">Bientôt</span>
+          </h3>
+          <p class="feature-description" data-translate-key="features.inAppOrdering.description">Offrez une expérience de commande fluide via l'application Y. Le client passe commande depuis son téléphone, puis présente un QR code unique. Le personnel scanne ce code pour valider la commande, ce qui déclenche la préparation. Une fois prête, vous pouvez notifier le client pour un retrait ou effectuer le service à table.</p>
+          <div class="feature-group" data-aos="fade-up">
+            <div class="feature-flow-diagram" data-aos="fade-up" data-aos-delay="100">
+              <h4 data-translate-key="features.inAppOrdering.flow.title">Comment ça marche :</h4>
+              <div class="flow-step menu-options-step">
+                <strong data-translate-key="features.inAppOrdering.flow.step1.title">Configuration Flexible du Menu</strong>
+                <p data-translate-key="features.inAppOrdering.flow.step1.optionA">Saisie Manuelle : Vous entrez vos plats et options directement.</p>
+                <p data-translate-key="features.inAppOrdering.flow.step1.optionB">Scan Intelligent : Vous téléchargez l'image de votre menu pour une conversion automatique.</p>
+              </div>
+              <div class="flow-arrow">⬇</div>
+              <div class="flow-step">
+                <strong data-translate-key="features.inAppOrdering.flow.step2.title">Commande Passée</strong>
+                <p data-translate-key="features.inAppOrdering.flow.step2.text">Le client commande via l'application Y.</p>
+              </div>
+              <div class="flow-arrow">⬇</div>
+              <div class="flow-step">
+                <strong data-translate-key="features.inAppOrdering.flow.step3.title">Validation par QR Code</strong>
+                <p data-translate-key="features.inAppOrdering.flow.step3.text">Le client présente un QR code unique via l'application. Le personnel le scanne pour confirmer, ce qui notifie l'établissement et déclenche la préparation de la commande.</p>
+              </div>
+              <div class="flow-arrow">⬇</div>
+              <div class="flow-step">
+                <strong data-translate-key="features.inAppOrdering.flow.step4.title">Préparation</strong>
+                <p data-translate-key="features.inAppOrdering.flow.step4.text">Le personnel prépare les articles.</p>
+              </div>
+              <div class="flow-arrow">⬇</div>
+              <div class="flow-step">
+                <strong data-translate-key="features.inAppOrdering.flow.step5.title">Exécution</strong>
+                <p data-translate-key="features.inAppOrdering.flow.step5.text">Notifier pour retrait ou livrer à table (sur place).</p>
+              </div>
+            </div>
+
           </div>
-          <p class="feature-description validation-description">La validation ? Un jeu d'enfant. Chaque offre a son QR code unique. Scannez-le via l'app Y : c'est instantané, sécurisé et le suivi est automatique. Zéro prise de tête.</p>
-          <div class="image-comparison">
-            <figure>
-              <img src="/LimitedTimeOffer.png" alt="Exemple d'offre à durée limitée finalisée" class="feature-image">
-              <figcaption>Exemple : Offre à durée limitée</figcaption>
-            </figure>
-            <figure>
-              <img src="/LoyaltyProgramOffer.png" alt="Exemple de programme de fidélité finalisé" class="feature-image">
-              <figcaption>Exemple : Programme de fidélité</figcaption>
-            </figure>
-          </div>
-        </div>
-         
-        <h2 id="mode-emploi">Mode d'emploi</h2>
-        <p class="feature-description">Revendiquer un spot, c'est simple : localisez-le sur Y, ouvrez la fiche détaillée et cliquez sur le bouton "Revendiquer" en bas de page.</p>
-        <div class="feature-group">
-          <div class="image-comparison">
-            <figure>
-              <img src="/howTo_1.png" alt="Première étape pour commencer" class="feature-image">
-              <figcaption>Étape 1 : Trouvez votre spot et cliquez sur "Détails"</figcaption>
-            </figure>
-            <figure>
-              <img src="/howTo_2.png" alt="Deuxième étape pour commencer" class="feature-image">
-              <figcaption>Étape 2 : Faites défiler et cliquez sur "Revendiquer"</figcaption>
-            </figure>
-          </div>
+        </section>
+      </section>
+
+      <section id="how-it-works" class="how-it-works-section" data-aos="fade-up">
+        <h2 data-translate-key="howItWorks.title">Mode d'emploi : Lancez-vous sur Y</h2>
+        <p class="feature-description" data-aos-delay="100" data-translate-key="howItWorks.description">
+          Découvrez comment revendiquer facilement votre établissement sur Y et accéder à toutes nos fonctionnalités pour dynamiser votre activité.
+        </p>
+        <div class="how-to-gallery" data-aos="zoom-in-up" data-aos-delay="200">
+          <figure>
+            <img src="/howTo_1.png" alt="Revendiquer son établissement sur Y" class="feature-image" data-translate-key="howItWorks.step1.imageAlt" />
+            <figcaption data-translate-key="howItWorks.step1.caption">Accéder à la page de votre spot, puis cliquer sur l'en-tête ou sur Détails</figcaption>
+          </figure>
+          <figure>
+            <img src="/howTo_2.png" alt="Accéder aux fonctionnalités Y" class="feature-image" data-translate-key="howItWorks.step2.imageAlt" />
+            <figcaption data-translate-key="howItWorks.step2.caption">Appuyer sur le bouton tout en bas de la page pour revendiquer votre spot</figcaption>
+          </figure>
         </div>
       </section>
 
       <section id="contact" class="contact" data-aos="zoom-in">
-        <h2>Attirez et fidélisez plus de clients avec Y</h2>
-        <p class="contact-text">Prêt à attirer de nouveaux clients ? Téléchargez Y, revendiquez votre spot et créez votre première offre dès maintenant.</p>
+        <h2 data-translate-key="contact.title">Attirez et fidélisez plus de clients avec Y</h2>
+        <p class="contact-text" data-translate-key="contact.subtitle">Prêt à attirer de nouveaux clients ? Téléchargez Y, revendiquez votre spot et créez votre première offre dès maintenant.</p>
         <div class="cta-container">
-          <a href="https://apps.apple.com/us/app/y-app/id6743629304" class="cta-button">Télécharger sur l'App Store</a>
-          <p class="contact-email">Pour obtenir de l'aide, contactez : <a href="mailto:contact@ygrec.app">contact@ygrec.app</a></p>
+          <a href="https://apps.apple.com/us/app/y-app/id6743629304" class="cta-button" data-translate-key="contact.cta.downloadAppStore">Télécharger sur l'App Store</a>
+          <p class="contact-email" data-translate-key="contact.emailHelp" data-translate-html>Pour obtenir de l'aide, contactez : <a href="mailto:contact@ygrec.app">contact@ygrec.app</a></p>
         </div>
       </section>
 
       <footer>
-        <p>© 2025 Y. Tous droits réservés.</p>
+        <p data-translate-key="footer.copyright">© 2025 Y. Tous droits réservés.</p>
       </footer>
     </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top" data-translate-key="ui.scrollToTop" aria-label="Scroll to top">↑</button>
 
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
